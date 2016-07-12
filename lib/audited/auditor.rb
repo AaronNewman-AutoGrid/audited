@@ -211,9 +211,30 @@ module Audited
       end
 
       def write_audit(attrs)
+        publish(format_attributes(attrs))
         attrs[:associated] = self.send(audit_associated_with) unless audit_associated_with.nil?
         self.audit_comment = nil
         run_callbacks(:audit)  { self.audits.create(attrs) } if auditing_enabled
+      end
+
+      def format_attributes(attrs)
+        result = {}
+        result['application'] = 'DROMS'
+        result['action'] = attrs[:action]
+        result['time_of_action'] = Time.now.strftime('%FT%T%:z')
+        result['actor'] = current_user
+        result['audited_object_type'] = attrs[:audited_changes]
+        result['audited_object_id'] = 500
+        result['tenant_id'] = current_user
+        result['correlation_id'] = 'corr_1'
+        result.to_json
+      end
+
+      def publish(message)
+        kafka = Kafka.new(seed_brokers: ['localhost:9092'])
+        producer = kafka.producer
+        producer.produce(message, topic: 'test_topic')
+        producer.deliver_messages
       end
 
       def require_comment
