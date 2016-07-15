@@ -1,3 +1,4 @@
+require 'kafka'
 module Audited
   # Specify this act if you want changes to your model to be saved in an
   # audit table.  This assumes there is an audits table ready.
@@ -196,6 +197,7 @@ module Audited
       def audit_create
         write_audit(:action => 'create', :audited_changes => audited_attributes,
                     :comment => audit_comment)
+        print 'create'
       end
 
       def audit_update
@@ -219,15 +221,43 @@ module Audited
 
       def format_attributes(attrs)
         result = {}
-        result['application'] = 'DROMS'
-        result['action'] = attrs[:action]
+        result['application'] = Tenant.settings[:system][:name]
+        result['action'] = find_action(attrs)
         result['time_of_action'] = Time.now.strftime('%FT%T%:z')
-        result['actor'] = current_user
-        result['audited_object_type'] = attrs[:audited_changes]
-        result['audited_object_id'] = 500
-        result['tenant_id'] = current_user
+        result['actor'] = User.current.username
+        result['audited_object_type'] = self.class.to_s
+        result['audited_object_id'] = @attributes['id']
+        result['tenant_id'] = self.tenant.uid
         result['correlation_id'] = 'corr_1'
+        result['update'] = find_update(attrs)
         result.to_json
+      end
+
+      def find_update(attrs)
+        action = find_action(attrs)
+        if action == 'update'
+          attrs[:audited_changes].to_s
+        else
+          action
+        end
+      end
+
+      def find_action(attrs)
+        changes = attrs[:audited_changes]
+        action = attrs[:action]
+        if changes.key?('deleted')
+          if changes['deleted'] == [false, true]
+            'delete'
+          else
+            'create'
+          end
+        elsif action == 'create'
+          'create'
+        elsif action == 'destroy'
+          'delete'
+        else
+          'update'
+        end
       end
 
       def publish(message)
