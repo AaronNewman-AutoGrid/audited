@@ -1,10 +1,36 @@
 language: ruby
-services: mongodb
+cache: bundler
 rvm:
-  - "1.9.3"
-  - "2.0.0"
-  - "2.1"
+  - 2.1
+  - 2.2.4
+  - 2.3.0
+  - ruby-head
+  - jruby-head
+env:
+  - DB=SQLITE
+  - DB=POSTGRES
+  - DB=MYSQL
 gemfile:
-  - gemfiles/rails30.gemfile
-  - gemfiles/rails31.gemfile
-  - gemfiles/rails32.gemfile
+  - gemfiles/rails40.gemfile
+  - gemfiles/rails41.gemfile
+  - gemfiles/rails42.gemfile
+  - gemfiles/rails50.gemfile
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-head
+  exclude:
+    - rvm: 2.1
+      gemfile: gemfiles/rails50.gemfile
+    - rvm: jruby-head
+      gemfile: gemfiles/rails50.gemfile
+  fast_finish: true
+branches:
+  only:
+  - master
+sudo: false
+notifications:
+  webhooks:
+    urls:
+    - http://buildlight.collectiveidea.com/
+    on_start: always

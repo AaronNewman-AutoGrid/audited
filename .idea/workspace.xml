@@ -2,8 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da8c6cef-fd06-4c66-822b-21ebc11c8796" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gemfiles/rails40.gemfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gemfiles/rails41.gemfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gemfiles/rails42.gemfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gemfiles/rails50.gemfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/audited/version.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/generators/audited/migration.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/generators/audited/templates/add_request_uuid_to_audits.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/audited/audit_spec.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/db/version_6.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audited-activerecord.gemspec" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/audited-mongo_mapper.gemspec" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gemfiles/rails30.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gemfiles/rails31.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gemfiles/rails32.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/audited-activerecord.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/audited-mongo_mapper.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/audited/adapters/active_record.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/audited/adapters/active_record/audit.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/audited/adapters/mongo_mapper.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/audited/adapters/mongo_mapper/audit.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/audited/adapters/mongo_mapper/audited_changes.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/audited/adapters/active_record/active_record_spec_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/audited/adapters/active_record/audit_spec.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/audited/adapters/mongo_mapper/audit_spec.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/audited/adapters/mongo_mapper/auditor_spec.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/audited/adapters/mongo_mapper/mongo_mapper_spec_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/audited/adapters/mongo_mapper/sweeper_spec.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/support/mongo_mapper/connection.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/support/mongo_mapper/models.rb" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/spec/audited/adapters/active_record/auditor_spec.rb" afterPath="$PROJECT_DIR$/spec/audited/auditor_spec.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/spec/audited/adapters/active_record/sweeper_spec.rb" afterPath="$PROJECT_DIR$/spec/audited/sweeper_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Appraisals" afterPath="$PROJECT_DIR$/Appraisals" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Rakefile" afterPath="$PROJECT_DIR$/Rakefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/audited.gemspec" afterPath="$PROJECT_DIR$/audited.gemspec" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/audited.rb" afterPath="$PROJECT_DIR$/lib/audited.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/audited/audit.rb" afterPath="$PROJECT_DIR$/lib/audited/audit.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/audited/auditor.rb" afterPath="$PROJECT_DIR$/lib/audited/auditor.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/audited/rspec_matchers.rb" afterPath="$PROJECT_DIR$/lib/audited/rspec_matchers.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/audited/sweeper.rb" afterPath="$PROJECT_DIR$/lib/audited/sweeper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/generators/audited/install_generator.rb" afterPath="$PROJECT_DIR$/lib/generators/audited/install_generator.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/generators/audited/templates/install.rb" afterPath="$PROJECT_DIR$/lib/generators/audited/templates/install.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/generators/audited/upgrade_generator.rb" afterPath="$PROJECT_DIR$/lib/generators/audited/upgrade_generator.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/audited_spec_helpers.rb" afterPath="$PROJECT_DIR$/spec/audited_spec_helpers.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_app/config/application.rb" afterPath="$PROJECT_DIR$/spec/rails_app/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_app/config/database.yml" afterPath="$PROJECT_DIR$/spec/rails_app/config/database.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_app/config/environments/development.rb" afterPath="$PROJECT_DIR$/spec/rails_app/config/environments/development.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_app/config/environments/production.rb" afterPath="$PROJECT_DIR$/spec/rails_app/config/environments/production.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_app/config/environments/test.rb" afterPath="$PROJECT_DIR$/spec/rails_app/config/environments/test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_app/config/initializers/secret_token.rb" afterPath="$PROJECT_DIR$/spec/rails_app/config/initializers/secret_token.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_app/config/routes.rb" afterPath="$PROJECT_DIR$/spec/rails_app/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/spec_helper.rb" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/active_record/models.rb" afterPath="$PROJECT_DIR$/spec/support/active_record/models.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/support/active_record/schema.rb" afterPath="$PROJECT_DIR$/spec/support/active_record/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/upgrade_generator_test.rb" afterPath="$PROJECT_DIR$/test/upgrade_generator_test.rb" />
     </list>
     <ignored path="audited.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +86,18 @@
       <file leaf-file-name="auditor.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="257" column="12" selection-start-line="257" selection-start-column="12" selection-end-line="257" selection-end-column="12" />
+            <state relative-caret-position="3000">
+              <caret line="200" column="22" selection-start-line="200" selection-start-column="22" selection-end-line="200" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -44,8 +111,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/lib/audited/auditor.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -163,12 +230,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468355166870</updated>
-      <workItem from="1468355168055" duration="15682000" />
+      <workItem from="1468355168055" duration="15766000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15682000" />
+    <option name="totallyTimeSpent" value="15766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="404" y="53" width="944" height="718" extended-state="0" />
@@ -219,8 +286,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="257" column="12" selection-start-line="257" selection-start-column="12" selection-end-line="257" selection-end-column="12" />
+        <state relative-caret-position="3000">
+          <caret line="200" column="22" selection-start-line="200" selection-start-column="22" selection-end-line="200" selection-end-column="22" />
           <folding />
         </state>
       </provider>
