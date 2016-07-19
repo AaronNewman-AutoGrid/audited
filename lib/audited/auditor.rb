@@ -16,6 +16,10 @@ module Audited
     extend ActiveSupport::Concern
 
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
+    TENANT_METHODS = {'UtilityDrEvent' => 'self.tenant.uid',
+                      'User' => 'self.tenant.uid',
+                      'OptOut' => 'UtilityDrEvent.where(id: self.utility_dr_event_id).first.tenant.uid',
+                      'ParticipantsSubscription' => 'UtilityProgram.where(id: self.utility_program_id).first.tenant.uid'}
 
     module ClassMethods
       # == Configuration options
@@ -230,10 +234,14 @@ module Audited
         result['actor'] = User.current.username
         result['audited_object_type'] = self.class.to_s
         result['audited_object_id'] = @attributes['id']
-        result['tenant_id'] = self.tenant.uid
         result['correlation_id'] = 'corr_1'
         result['update'] = find_update(attrs)
+        result['tenant_id'] = find_tenant(self.class.to_s)
         result.to_json
+      end
+
+      def find_tenant(class_name)
+        eval(TENANT_METHODS[class_name])
       end
 
       def find_update(attrs)
