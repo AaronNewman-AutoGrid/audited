@@ -19,7 +19,10 @@ module Audited
                       'User' => 'self.tenant.uid',
                       'OptOut' => 'UtilityDrEvent.where(id: self.utility_dr_event_id).first.tenant.uid',
                       'ParticipantsSubscription' => 'UtilityProgram.where(id: self.utility_program_id).first.tenant.uid'}
-    
+    HOST = 'localhost'
+    PORT = 9200
+    TOPIC = 'test_topic'
+
     module ClassMethods
       # == Configuration options
       #
@@ -258,9 +261,9 @@ module Audited
       end
 
       def publish(message)
-        kafka = Kafka.new(seed_brokers: ['localhost:9092'])
+        kafka = Kafka.new(seed_brokers: [HOST + ':' + PORT])
         producer = kafka.producer
-        producer.produce(message, topic: 'test_topic')
+        producer.produce(message, topic: TOPIC)
         producer.deliver_messages
       end
 
