@@ -15,7 +15,11 @@ module Audited
     extend ActiveSupport::Concern
 
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
-
+    TENANT_METHODS = {'UtilityDrEvent' => 'self.tenant.uid',
+                      'User' => 'self.tenant.uid',
+                      'OptOut' => 'UtilityDrEvent.where(id: self.utility_dr_event_id).first.tenant.uid',
+                      'ParticipantsSubscription' => 'UtilityProgram.where(id: self.utility_program_id).first.tenant.uid'}
+    
     module ClassMethods
       # == Configuration options
       #
@@ -205,9 +209,59 @@ module Audited
       end
 
       def write_audit(attrs)
+        publish(format_attributes(attrs))
         attrs[:associated] = self.send(audit_associated_with) unless audit_associated_with.nil?
         self.audit_comment = nil
         run_callbacks(:audit)  { self.audits.create(attrs) } if auditing_enabled
+      end
+
+      def format_attributes(attrs)
+        byebug
+        result = {}
+        result['application'] = Tenant.settings[:system][:name]
+        result['action'] = find_action(attrs)
+        result['time_of_action'] = Time.now.strftime('%FT%T%:z')
+        result['actor'] = User.current.username
+        result['audited_object_type'] = self.class.to_s
+        result['audited_object_id'] = self.id
+        result['correlation_id'] = 'corr_1'
+        result['update'] = find_update(attrs)
+        result['tenant_id'] = find_tenant(self.class.to_s)
+        result.to_json
+      end
+
+      def find_tenant(class_name)
+        eval(TENANT_METHODS[class_name])
+      end
+
+      def find_update(attrs)
+        action = find_action(attrs)
+        if action == 'update'
+          attrs[:audited_changes].to_s
+        else
+          action
+        end
+      end
+
+      def find_action(attrs)
+        changes = attrs[:audited_changes]
+        action = attrs[:action]
+        if changes.key?('deleted')
+          if changes['deleted'] == [false, true]
+            'delete'
+          else
+            'create'
+          end
+        else
+          action
+        end
+      end
+
+      def publish(message)
+        kafka = Kafka.new(seed_brokers: ['localhost:9092'])
+        producer = kafka.producer
+        producer.produce(message, topic: 'test_topic')
+        producer.deliver_messages
       end
 
       def require_comment
