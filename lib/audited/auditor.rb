@@ -219,7 +219,6 @@ module Audited
       end
 
       def format_attributes(attrs)
-        byebug
         result = {}
         result['application'] = Tenant.settings[:system][:name]
         result['action'] = find_action(attrs)
