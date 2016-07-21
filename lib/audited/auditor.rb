@@ -40,6 +40,7 @@ module Audited
       #   any create, update or destroy operation.
       #
       def audited(options = {})
+        byebug
         # don't allow multiple calls
         return if included_modules.include?(Audited::Auditor::AuditedInstanceMethods)
 
@@ -220,6 +221,7 @@ module Audited
       end
 
       def write_audit(attrs)
+        byebug
         publish(format_attributes(attrs))
         attrs[:associated] = self.send(audit_associated_with) unless audit_associated_with.nil?
         self.audit_comment = nil
@@ -227,13 +229,14 @@ module Audited
       end
 
       def format_attributes(attrs)
+        byebug
         result = {}
         result['application'] = Tenant.settings[:system][:name]
         result['action'] = find_action(attrs)
         result['time_of_action'] = Time.now.strftime('%FT%T%:z')
         result['actor'] = User.current.username
         result['audited_object_type'] = self.class.to_s
-        result['audited_object_id'] = @attributes['id']
+        result['audited_object_id'] = self.id
         result['correlation_id'] = 'corr_1'
         result['update'] = find_update(attrs)
         result['tenant_id'] = find_tenant(self.class.to_s)
