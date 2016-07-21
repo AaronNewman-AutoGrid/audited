@@ -265,12 +265,8 @@ module Audited
           else
             'create'
           end
-        elsif action == 'create'
-          'create'
-        elsif action == 'destroy'
-          'delete'
         else
-          'update'
+          action
         end
       end
 
