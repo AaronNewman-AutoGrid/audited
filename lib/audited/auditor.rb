@@ -16,6 +16,8 @@ module Audited
 
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
 
+    SETTINGS = YAML.load_file(Rails.root.join('lib/settings.yml'))
+
     HOST = 'localhost'
     PORT = 9092
     TOPIC = 'test_topic'
@@ -253,9 +255,9 @@ module Audited
       end
 
       def publish(message)
-        kafka = Kafka.new(seed_brokers: [HOST + ':' + PORT.to_s])
+        kafka = Kafka.new(seed_brokers: [SETTINGS['host'] + ':' + SETTINGS['port'].to_s])
         producer = kafka.producer
-        producer.produce(message, topic: TOPIC)
+        producer.produce(message, topic: SETTINGS['topic'])
         producer.deliver_messages
       end
 
