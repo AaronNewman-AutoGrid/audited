@@ -15,12 +15,8 @@ module Audited
     extend ActiveSupport::Concern
 
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
+    SETTINGS = Tenant.settings[:audited]
 
-    SETTINGS = YAML.load_file(Rails.root.join('lib/settings.yml'))
-
-    HOST = 'localhost'
-    PORT = 9092
-    TOPIC = 'test_topic'
 
     module ClassMethods
       # == Configuration options
@@ -255,9 +251,9 @@ module Audited
       end
 
       def publish(message)
-        kafka = Kafka.new(seed_brokers: [SETTINGS['host'] + ':' + SETTINGS['port'].to_s])
+        kafka = Kafka.new(seed_brokers: [SETTINGS[:host] + ':' + SETTINGS[:port].to_s])
         producer = kafka.producer
-        producer.produce(message, topic: SETTINGS['topic'])
+        producer.produce(message, topic: SETTINGS[:topic])
         producer.deliver_messages
       end
 
