@@ -17,7 +17,6 @@ module Audited
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
     SETTINGS = Tenant.settings[:audited]
 
-
     module ClassMethods
       # == Configuration options
       #
@@ -218,7 +217,7 @@ module Audited
         result['application'] = Tenant.settings[:system][:name]
         result['action'] = find_action(attrs)
         result['time_of_action'] = Time.now.strftime('%FT%T%:z')
-        result['actor'] = User.current.username
+        result['actor'] = User.current.present? ? User.current.username : 'Developer'
         result['audited_object_type'] = self.class.to_s
         result['audited_object_id'] = self.id
         result['correlation_id'] = 'corr_1'

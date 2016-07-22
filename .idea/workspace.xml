@@ -27,8 +27,8 @@
       <file leaf-file-name="auditor.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="260" column="51" selection-start-line="260" selection-start-column="51" selection-end-line="260" selection-end-column="51" />
+            <state relative-caret-position="90">
+              <caret line="219" column="49" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -259,12 +259,12 @@
       <updated>1468355166870</updated>
       <workItem from="1468355168055" duration="22476000" />
       <workItem from="1468878137294" duration="1561000" />
-      <workItem from="1468881826915" duration="31419000" />
+      <workItem from="1468881826915" duration="31947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55456000" />
+    <option name="totallyTimeSpent" value="55984000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="309" y="79" width="944" height="718" extended-state="0" />
@@ -345,8 +345,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="260" column="51" selection-start-line="260" selection-start-column="51" selection-end-line="260" selection-end-column="51" />
+        <state relative-caret-position="90">
+          <caret line="219" column="49" selection-start-line="219" selection-start-column="49" selection-end-line="219" selection-end-column="49" />
           <folding />
         </state>
       </provider>
