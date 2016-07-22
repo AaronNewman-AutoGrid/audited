@@ -15,12 +15,9 @@ module Audited
     extend ActiveSupport::Concern
 
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
-    TENANT_METHODS = {'UtilityDrEvent' => 'self.tenant.uid',
-                      'User' => 'self.tenant.uid',
-                      'OptOut' => 'UtilityDrEvent.where(id: self.utility_dr_event_id).first.tenant.uid',
-                      'ParticipantsSubscription' => 'UtilityProgram.where(id: self.utility_program_id).first.tenant.uid'}
+
     HOST = 'localhost'
-    PORT = 9200
+    PORT = 9092
     TOPIC = 'test_topic'
 
     module ClassMethods
@@ -228,12 +225,8 @@ module Audited
         result['audited_object_id'] = self.id
         result['correlation_id'] = 'corr_1'
         result['update'] = find_update(attrs)
-        result['tenant_id'] = find_tenant(self.class.to_s)
+        result['tenant_id'] = User.current.tenant.uid
         result.to_json
-      end
-
-      def find_tenant(class_name)
-        eval(TENANT_METHODS[class_name])
       end
 
       def find_update(attrs)
@@ -260,7 +253,7 @@ module Audited
       end
 
       def publish(message)
-        kafka = Kafka.new(seed_brokers: [HOST + ':' + PORT])
+        kafka = Kafka.new(seed_brokers: [HOST + ':' + PORT.to_s])
         producer = kafka.producer
         producer.produce(message, topic: TOPIC)
         producer.deliver_messages
