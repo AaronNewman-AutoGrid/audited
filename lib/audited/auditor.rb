@@ -15,7 +15,6 @@ module Audited
     extend ActiveSupport::Concern
 
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
-    SETTINGS = ::Tenant.settings[:audited]
 
     module ClassMethods
       # == Configuration options
@@ -213,7 +212,6 @@ module Audited
       end
 
       def format_attributes(attrs)
-        byebug
         result = {}
         result['application'] = ::Tenant.settings[:system][:name]
         result['action'] = find_action(attrs)
@@ -251,9 +249,10 @@ module Audited
       end
 
       def publish(message)
-        kafka = Kafka.new(seed_brokers: [SETTINGS[:host] + ':' + SETTINGS[:port].to_s])
+        settings = Tenant.settings[:audited]
+        kafka = Kafka.new(seed_brokers: [settings[:host] + ':' + settings[:port].to_s])
         producer = kafka.producer
-        producer.produce(message, topic: SETTINGS[:topic])
+        producer.produce(message, topic: settings[:topic])
         producer.deliver_messages
       end
 
