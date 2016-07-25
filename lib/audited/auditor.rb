@@ -221,7 +221,7 @@ module Audited
         result['audited_object_id'] = self.id
         result['correlation_id'] = 'corr_1'
         result['update'] = find_update(attrs)
-        result['tenant_id'] = User.current.tenant.uid
+        result['tenant_id'] = User.current.present? ? User.current.tenant.uid : 'AutoGrid'
         result.to_json
       end
 
