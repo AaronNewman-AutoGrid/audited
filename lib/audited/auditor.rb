@@ -15,7 +15,7 @@ module Audited
     extend ActiveSupport::Concern
 
     CALLBACKS = [:audit_create, :audit_update, :audit_destroy]
-    SETTINGS = Tenant.settings[:audited]
+    SETTINGS = ::Tenant.settings[:audited]
 
     module ClassMethods
       # == Configuration options
@@ -215,7 +215,7 @@ module Audited
       def format_attributes(attrs)
         byebug
         result = {}
-        result['application'] = Tenant.settings[:system][:name]
+        result['application'] = ::Tenant.settings[:system][:name]
         result['action'] = find_action(attrs)
         result['time_of_action'] = Time.now.strftime('%FT%T%:z')
         result['actor'] = User.current.present? ? User.current.username : 'Developer'

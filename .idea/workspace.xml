@@ -27,8 +27,8 @@
       <file leaf-file-name="auditor.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="218" column="40" selection-start-line="218" selection-start-column="40" selection-end-line="218" selection-end-column="40" />
+            <state relative-caret-position="330">
+              <caret line="230" column="35" selection-start-line="230" selection-start-column="35" selection-end-line="230" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -259,15 +259,15 @@
       <updated>1468355166870</updated>
       <workItem from="1468355168055" duration="22476000" />
       <workItem from="1468878137294" duration="1561000" />
-      <workItem from="1468881826915" duration="33627000" />
+      <workItem from="1468881826915" duration="34883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57664000" />
+    <option name="totallyTimeSpent" value="58920000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="309" y="79" width="944" height="718" extended-state="1" />
+    <frame x="309" y="79" width="944" height="718" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -345,8 +345,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="218" column="40" selection-start-line="218" selection-start-column="40" selection-end-line="218" selection-end-column="40" />
+        <state relative-caret-position="330">
+          <caret line="230" column="35" selection-start-line="230" selection-start-column="35" selection-end-line="230" selection-end-column="35" />
           <folding />
         </state>
       </provider>
