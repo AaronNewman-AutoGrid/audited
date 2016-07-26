@@ -213,7 +213,7 @@ module Audited
 
       def format_attributes(attrs)
         result = {}
-        result['application'] = ::Tenant.settings[:system][:name]
+        result['application'] = Edp::Settings.get(:system)[:name]
         result['action'] = find_action(attrs)
         result['time_of_action'] = Time.now.strftime('%FT%T%:z')
         result['actor'] = User.current.present? ? User.current.username : 'Developer'
@@ -249,7 +249,7 @@ module Audited
       end
 
       def publish(message)
-        settings = Tenant.settings[:audited]
+        settings = Edp::Settings.get(:audited)
         kafka = Kafka.new(seed_brokers: [settings[:host] + ':' + settings[:port].to_s])
         producer = kafka.producer
         producer.produce(message, topic: settings[:topic])
