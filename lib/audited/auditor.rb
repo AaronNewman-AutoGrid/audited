@@ -205,7 +205,7 @@ module Audited
       end
 
       def write_audit(attrs)
-        publish(format_attributes(attrs))
+        Audited::Auditor::AuditedInstanceMethods.publish(format_attributes(attrs))
         attrs[:associated] = self.send(audit_associated_with) unless audit_associated_with.nil?
         self.audit_comment = nil
         run_callbacks(:audit)  { self.audits.create(attrs) } if auditing_enabled
