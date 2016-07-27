@@ -554,18 +554,18 @@ describe Audited::Auditor, :adapter => :active_record do
         user = Models::ActiveRecord::User.new(:name => 'Brandon')
         result = JSON.parse(user.send(:format_attributes, attrs))
         expect(result).to be_instance_of(Hash)
-        expect(result.length).to eq(8)
+        expect(result.length).to eq(9)
         expect(result['update']).to eq('create')
       end
     end
 
     context 'when an object is updated' do
       it 'should include the appropriate changed attributes' do
-        attrs = {:audited_change => {:participant_count => [0, 1]}, :action => 'update'}
+        attrs = {:audited_changes => {:participant_count => [0, 1]}, :action => 'update'}
         user = Models::ActiveRecord::User.new(:name => 'Brandon')
         result = JSON.parse(user.send(:format_attributes, attrs))
         expect(result).to be_instance_of(Hash)
-        expect(result.length).to eq(8)
+        expect(result.length).to eq(9)
         expect(result['update']).to eq({:participant_count => [0, 1]}.to_s)
       end
     end
