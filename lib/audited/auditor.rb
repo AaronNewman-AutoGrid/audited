@@ -207,7 +207,7 @@ module Audited
       def write_audit(attrs)
         publish(format_attributes(attrs))
         attrs[:associated] = self.send(audit_associated_with) unless audit_associated_with.nil?
-        self.audit_comment = nil
+        audit_comment = nil
         run_callbacks(:audit)  { self.audits.create(attrs) } if auditing_enabled
       end
 
@@ -250,10 +250,14 @@ module Audited
 
       def publish(message)
         settings = Edp::Settings.get(:audited)
-        kafka = Kafka.new(seed_brokers: [settings[:host] + ':' + settings[:port].to_s])
-        producer = kafka.producer
-        producer.produce(message, topic: settings[:topic])
-        producer.deliver_messages
+        begin
+          kafka = Kafka.new(seed_brokers: [settings[:host] + ':' + settings[:port].to_s])
+          producer = kafka.producer
+          producer.produce(message, topic: settings[:topic])
+          producer.deliver_messages
+        rescue StandardError
+          return
+        end
       end
 
       def require_comment
