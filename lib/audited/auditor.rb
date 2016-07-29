@@ -249,7 +249,7 @@ module Audited
       end
 
       def publish(message)
-        settings = Edp::Settings.get(:audited)
+        settings = Edp::Settings.get(:audited)[:kafka]
         begin
           kafka = Kafka.new(seed_brokers: [settings[:host] + ':' + settings[:port].to_s])
           producer = kafka.producer
