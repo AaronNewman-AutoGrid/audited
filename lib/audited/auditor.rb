@@ -238,11 +238,7 @@ module Audited
         changes = attrs[:audited_changes]
         action = attrs[:action]
         if changes.key?('deleted')
-          if changes['deleted'] == [false, true]
-            'delete'
-          else
-            'create'
-          end
+          changes['deleted'] == [false, true] ? 'delete' : 'create'
         else
           action
         end

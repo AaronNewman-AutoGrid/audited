@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da8c6cef-fd06-4c66-822b-21ebc11c8796" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/audited/auditor.rb" afterPath="$PROJECT_DIR$/lib/audited/auditor.rb" />
     </list>
     <ignored path="audited.iws" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="auditor.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="259" column="11" selection-start-line="259" selection-start-column="11" selection-end-line="259" selection-end-column="11" />
+            <state relative-caret-position="270">
+              <caret line="221" column="43" selection-start-line="221" selection-start-column="43" selection-end-line="221" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -330,15 +329,15 @@
       <workItem from="1468355168055" duration="22476000" />
       <workItem from="1468878137294" duration="1561000" />
       <workItem from="1468881826915" duration="67968000" />
-      <workItem from="1469727719124" duration="1294000" />
+      <workItem from="1469727719124" duration="2340000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93299000" />
+    <option name="totallyTimeSpent" value="94345000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="98" y="78" width="944" height="724" extended-state="1" />
+    <frame x="98" y="78" width="944" height="724" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -458,8 +457,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/audited/auditor.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="259" column="11" selection-start-line="259" selection-start-column="11" selection-end-line="259" selection-end-column="11" />
+        <state relative-caret-position="270">
+          <caret line="221" column="43" selection-start-line="221" selection-start-column="43" selection-end-line="221" selection-end-column="43" />
           <folding />
         </state>
       </provider>
